@@ -8,19 +8,33 @@ $tmdb_V3->setLang("en");
 
 $searchOption="";
 $obj="";
-$opts = getopt("i:n:l",array());
+$opts = getopt("y:i:n:la",array());
 
-if(isset($opts['n']))
+function renderSearchResults($obj)
 {
-	$obj = $tmdb_V3->searchMovie($opts['n']);
-	echo str_pad("tmdb_id",8," ",STR_PAD_LEFT)." | ".str_pad("Release Date",12," ",STR_PAD_LEFT)." | Title\n";
 	foreach($obj['results'] as $searchResult)
 	{
 		echo str_pad($searchResult['id'],8," ",STR_PAD_LEFT)." | ".str_pad($searchResult['release_date'],12," ",STR_PAD_LEFT)." | {$searchResult['title']}\n";
 	}
+}
 
-	if($obj['total_pages']>1)
-		echo "# Multiple Pages of results ({$obj['total_pages']}) returned - only the first is displayed\n";
+if(isset($opts['n']))
+{
+	$obj = $tmdb_V3->searchMovie($opts['n'], "en", isset($opts['y'])?$opts['y']:-1);
+	echo str_pad("tmdb_id",8," ",STR_PAD_LEFT)." | ".str_pad("Release Date",12," ",STR_PAD_LEFT)." | Title\n";
+	renderSearchResults($obj);
+	if(isset($opts['a']))
+	{
+		//add more pages!
+		for($pageNum=2;$pageNum<=$obj['total_pages'];++$pageNum)
+		{
+			$obj = $tmdb_V3->searchMovie($opts['n'], "en", isset($opts['y'])?$opts['y']:-1,$pageNum);
+			renderSearchResults($obj);
+		}
+	}
+	else if($obj['total_pages']>1)
+		echo "# Multiple Pages of results ({$obj['total_pages']}) returned - only the first is displayed, use -a for all\n";
+
 }
 elseif(isset($opts['i']))
 {
