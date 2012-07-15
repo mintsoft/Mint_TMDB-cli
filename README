@@ -1,0 +1,6 @@
+Similiar to MintAutoNameTV this is a script to wrap up a php class and provide a CLI for it.
+
+filmTag -n allows you to search by name for a film and returns a table formatted like so:
+	TMDB_ID | Release Date | Film Name
+
+film -i <TMDB_ID> will populate the template XML and output the result to stdout
