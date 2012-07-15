@@ -5,7 +5,7 @@ Tagging
 
 Populate the template XML and output the result to stdout for the indicated TMDB ID.
 ```
-filmTag -i <TMDB_ID>
+tmdbcli -i <TMDB_ID>
 ```
 * <code>-i <TMDB_ID> </code> specifies which ID
 * <code>-l</code> can be used to omit the final/'extra' \n from the output
@@ -15,7 +15,7 @@ Searching
 
 Search by name for a film and returns a formatted table (designed for human consumption)
 ```
-filmTag -n <Film> [-y <Year>] [-a]
+tmdbcli -n <Film> [-y <Year>] [-a]
 ```
 * <code>-n</code> the name of the film
 * <code>-y <Year></code> can be used to specify the year of release
@@ -25,10 +25,10 @@ Examples
 ========
 Find Star Wars Films in 1999 (Star Wars: Episode I - The Phantom Menace)
 ```
-filmTag -y 1999 -n 'Star Wars'
+tmdbcli -y 1999 -n 'Star Wars'
 ```
 
 Find all "Star Wars" Films (approx 50 in tmdb)
 ```
-filmTag -a -n 'Star Wars' 
+tmdbcli -a -n 'Star Wars' 
 ```
