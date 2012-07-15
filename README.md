@@ -1,18 +1,34 @@
-Similiar to MintAutoNameTV this is a script to wrap up a php class and provide a CLI for it.
+Similiar to MintAutoNameTV, this is a script to wrap up a php class and provide a CLI for it.
 
-filmTag -i <TMDB_ID> will populate the template XML and output the result to stdout
-fimTag -l -i <TMDB_ID> will not have the "extra" \n on the end
+Tagging
+=======
 
-==Searching==
-filmTag -n <Film> allows you to search by name for a film and returns a table formatted like so:
-	TMDB_ID | Release Date | Film Name
+Populate the template XML and output the result to stdout for the indicated TMDB ID.
+```
+filmTag -i <TMDB_ID>
+```
+* <code>-i <TMDB_ID> </code> specifies which ID
+* <code>-l</code> can be used to omit the final/'extra' \n from the output
 
-filmTag -y 1999 can be used to specify the year of release
-filmTag -a can be used to retrieve all results. WARNING - this may be very slow for large numbers
-	of result pages.
+Searching
+=========
+
+Search by name for a film and returns a formatted table (designed for human consumption)
+```
+filmTag -n <Film> [-y <Year>] [-a]
+```
+* <code>-n</code> the name of the film
+* <code>-y <Year></code> can be used to specify the year of release
+* <code>-a</code> can be used to retrieve all results. WARNING - this may be very slow for large numbers of result pages.
 	
-===Examples===
+Examples
+========
+Find Star Wars Films in 1999 (Star Wars: Episode I - The Phantom Menace)
+```
 filmTag -y 1999 -n 'Star Wars'
-	should find Star Wars: Episode I - The Phantom Menace
+```
+
+Find all "Star Wars" Films (approx 50 in tmdb)
+```
 filmTag -a -n 'Star Wars' 
-	should find all "Star Wars" films (approx 50 in tmdb)
+```
