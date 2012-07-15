@@ -20,7 +20,7 @@ if(isset($opts['n']))
 	}
 
 	if($obj['total_pages']>1)
-		echo "# Multiple Pages of results ({$obj['total_pages']} returned - only the first is displayed\n";
+		echo "# Multiple Pages of results ({$obj['total_pages']}) returned - only the first is displayed\n";
 }
 elseif(isset($opts['i']))
 {
