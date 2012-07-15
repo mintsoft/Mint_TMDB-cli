@@ -58,12 +58,6 @@ class TMDBv3{
 	*/
 	const VERSION = '0.0.1';
 	/**
-	* @link http://www.example.com Example link
-	* @see myclass()
-	* @uses testing, anotherconstant
-	* @var array
-	*/
-	/**
 	 * The API-key
 	 *
 	 * @var string
@@ -79,7 +73,7 @@ class TMDBv3{
 	* url of TMDB images
 	*/
 	private $_imgUrl;
-###############################################################################################################
+
     function  __construct($apikey) {
 		//Assign Api Key
         $this->setApikey($apikey);
@@ -88,7 +82,7 @@ class TMDBv3{
 
 		//Get Configuration
 		$conf = $this->getConfig();
-		if (empty($conf)){echo "Imposible leer configuracion, verifique que la llave de la API sea valida";exit;}
+		if (empty($conf)){echo "Unable to read configuration, verify the API key is valid";exit;}
 		//set Images URL contain in config
 		$this->setImageURL($conf);
     }
@@ -122,39 +116,24 @@ class TMDBv3{
 		return $trans;
 	}
 
-	/**
-	* Movie Info
-	* http://api.themoviedb.org/3/movie/$id
-	* @param array  movieInfo
-	*/
 	public function movieTrailer($idMovie)
 	{
 		$trailer = $this->movieInfo($idMovie,"trailers",false);
-		// $trailer =$trailer['posters'];
 		return $trailer;
 	}
+
 	public function movieDetail($idMovie)
 	{
 		return $this->movieInfo($idMovie,"",false);
 	}
 
-	/**
-	* Movie Info
-	* http://api.themoviedb.org/3/movie/$id
-	* @param array  movieInfo
-	*/
 	public function moviePoster($idMovie)
 	{
 		$posters = $this->movieInfo($idMovie,"images",false);
-		$posters =$posters['posters'];
+		$posters = $posters['posters'];
 		return $posters;
 	}
 
-	/**
-	* Movie Info
-	* http://api.themoviedb.org/3/movie/$id
-	* @param array  movieInfo
-	*/
 	public function movieCast($idMovie)
 	{
 		$castingTmp = $this->movieInfo($idMovie,"casts",false);
@@ -181,14 +160,14 @@ class TMDBv3{
 	* http://api.themoviedb.org/3/search/movie?api_keyf&language&query=future
 	* @param string  $peopleName
 	*/
-	public function searchMovie($movieTitle,$lang="en",$year=-1,$page=-1){
+	public function searchMovie($movieTitle,$year=-1,$page=-1){
 		$searchArgs="query=".urlencode($movieTitle);
 		if($year > -1)
 			$searchArgs.="&year=".urlencode($year);
 		if($page > -1)
 			$searchArgs.="&page=".urlencode($page);
 
-		return $this->_call("search/movie",$searchArgs,$lang);
+		return $this->_call("search/movie",$searchArgs,"");
 	}
 
 	/**

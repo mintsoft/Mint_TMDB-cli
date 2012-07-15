@@ -10,6 +10,14 @@ tmdbcli -i <TMDB_ID>
 * <code>-i <TMDB_ID> </code> specifies which ID
 * <code>-l</code> can be used to omit the final/'extra' \n from the output
 
+Posters
+=======
+
+Retrieve a list of Posters/Images for the film with the indicated TMDB ID 
+```
+tmdbcli -p -i <TMDB_ID>
+````
+
 Searching
 =========
 
