@@ -59,6 +59,8 @@ elseif(isset($opts['i']))
 		$output = str_replace( "%DATE_RELEASED%",	htmlentities($obj['release_date']), $output);
 		$output = str_replace( "%TITLE%",			htmlentities($obj['title']), $output);
 		$output = str_replace( "%ORIGINAL_TITLE%",	htmlentities($obj['original_title']), $output);
+		$output = str_replace( "%IMDBURL%",	htmlentities("https://www.imdb.com/title/".$obj['imdb_id']."/"), $output);
+		$output = str_replace( "%TMDBURL%",	htmlentities("https://www.themoviedb.org/movie/".$obj['id']), $output);
 
 		print $output;
 		//-l means don't include the extra \n on the end of the file

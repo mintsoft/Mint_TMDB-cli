@@ -29,6 +29,14 @@ $outputTemplate = <<<END
 			<Name>ORIGINAL_TITLE</Name>
 			<String>%ORIGINAL_TITLE%</String>
 		</Simple>
+		<Simple>
+			<Name>IMDBURL</Name>
+			<String>%IMDBURL%</String>
+		</Simple>
+		<Simple>
+			<Name>TMDBURL</Name>
+			<String>%TMDBURL%</String>
+		</Simple>
 	</Tag>
 </Tags>
 END;
