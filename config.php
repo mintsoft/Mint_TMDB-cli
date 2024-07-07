@@ -41,4 +41,16 @@ $outputTemplate = <<<END
 </Tags>
 END;
 
-?>
+$outputNfoTemplate = <<<END
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<movie>
+    <title>%TITLE%</title>
+    <originaltitle>%ORIGINAL_TITLE%</originaltitle>
+    <userrating>%USER_RATING%</userrating>
+    <uniqueid type="tmdb" default="true">%TMDB_ID%</uniqueid> <!-- add a value to type="" eg imdb, tmdb, home, sport, docu, see sample below -->
+    <country>%COUNTRY%</country>
+    <director>%DIRECTOR%</director>
+    <premiered>%PREMIERED%</premiered> <!-- yyyy-mm-dd -->
+    <studio>%STUDIO%</studio>
+</movie>
+END;
